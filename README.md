@@ -1,7 +1,7 @@
 # javascript-playground
 Understanding javaScript
 
-### setup guide
+### Setup Guide
 
 1. Install nodeJs (To be able to execute **.js** file directly in terminal)(ex. ```node expense-tracker.js```)
 ```
@@ -14,5 +14,5 @@ npm install -g live-server
 ```
 
 
-#### appendix
-* [install HomeBrew for macOs](https://brew.sh/)
+### Appendix
+* [Install HomeBrew for macOs](https://brew.sh/)
