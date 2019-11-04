@@ -1,2 +1,2 @@
 # javascript-playground
-understanding java script
+Understanding JavaScript
