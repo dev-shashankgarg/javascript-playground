@@ -31,6 +31,7 @@ const orderedList = document.getElementById('notesList')
 
 const addNoteToList = (note) =>{
  let listElement = document.createElement('li')
+ listElement.className = 'note-elem'
 
  let paragraph = document.createElement('p')
 
@@ -47,8 +48,51 @@ const addNoteToList = (note) =>{
  orderedList.appendChild(listElement)
 }
 
+const findAndDisplayNote = (query) =>{
+    notes.filter(note => {
+        return note.title.toLowerCase().includes(query.toLowerCase()) || note.body.toLowerCase().includes(query.toLowerCase())
+    }).forEach(note => {
+        addNoteToList(note)
+    })
+}
 
-notes.forEach(note => {
-    addNoteToList(note)
+const hideNotes = () =>{
+    document.querySelectorAll('.note-elem').forEach( (elem) => {
+        elem.remove()
+    })
+}
+
+const showNotes = () =>{
+    notes.forEach(note => {
+        addNoteToList(note)
+    })
+}
+
+document.querySelector('#createNoteBtn').addEventListener('click' , (e) => {
+     console.log(`click button triggered`)
+     console.log(e)
 })
+
+document.querySelector('#hideNotesButton').addEventListener('click', (e) =>{
+    hideNotes()
+})
+
+document.querySelector('#showNotes').addEventListener('click', (e) => {
+    document.querySelectorAll('.note-elem').forEach( (elem) => {
+        elem.remove()
+    })
+    showNotes()
+})
+
+document.querySelector('#queryText').addEventListener('input' ,(e)=>{
+        hideNotes()
+        findAndDisplayNote(e.target.value)
+})
+
+document.querySelector('#nameFormId').addEventListener('submit',(event)=>{
+        event.preventDefault()
+        console.log(event.target.elements.password.value)
+}) 
+
+
 

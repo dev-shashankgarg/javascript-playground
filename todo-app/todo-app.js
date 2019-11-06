@@ -35,37 +35,106 @@ const todos = [
     }
 ]
 
-const completedTodoListElem = document.getElementById('completeTodoListId')
-const incompletedTodoListElem =  document.getElementById('incompleteTodoListId')
-const completedTodoParagraphElem =  document.getElementById('todoCompleteSummaryParagraphId')
-const incompletedTodoParagraphElem =  document.getElementById('todoIncompleteSummaryParagraphId')
+//------------------ create a todo start
 
-const completedTodos = todos.filter(todo => todo.completed)
-const incompletedTodos = todos.filter(todo => !todo.completed)
+document.querySelector('#createTodoFormId').addEventListener('submit' , (event) => {
+    event.preventDefault()
+    const todoName = event.target.elements.todoName.value
+    persistTodo(todos , todoName)
+    event.target.elements.todoName.value = ''
+})
 
-if(incompletedTodos.length > 0){
-    incompletedTodoParagraphElem.textContent = `You have ${incompletedTodos.length} TODO's to complete !!`
+const persistTodo = (todos , todoName) => {
+        todos.push({
+            text: todoName,
+            completed:false
+        })
 }
 
-if(completedTodos.length > 0){
-    completedTodoParagraphElem.textContent = `You have  completed ${completedTodos.length} TODO's`
+//------------------ create a todo end
+
+
+
+//---------------------filtering data for search start
+
+const deleteListElemIfAny = () =>{
+    document.querySelectorAll('.searchClassList').forEach(elem => elem.remove())
 }
 
-todos.forEach(todo =>{
-    let listElement = document.createElement('li')
-    let paragraph = document.createElement('p')
-   
-    let textNode = document.createElement('b')
-    textNode.textContent = `${todo.text}`
+const addToList = (list , todo) => {
+    const listElement = document.createElement('li')
+        listElement.className = 'searchClassList'
+        const paragraph = document.createElement('p')
+        const textNode = document.createElement('b')
+        textNode.textContent = `${todo.text}`
+        paragraph.appendChild(textNode)
+        listElement.appendChild(paragraph)
+        list.appendChild(listElement)
+}
 
-    paragraph.appendChild(textNode)
-   
-    listElement.appendChild(paragraph)
+const renderTodo = (todos , query) => {
+    todos.filter(todo => {
+        return todo.text.toLowerCase().includes(query.toLowerCase())
+    }).forEach(todo => {
+        addToList(document.querySelector('#searchTodoListId') , todo)
+    })
+}
 
-    if(todo.completed){
-        completedTodoListElem.appendChild(listElement)
-    }else{
-        incompletedTodoListElem.appendChild(listElement)
+document.querySelector('#queryText').addEventListener('input', (event) => {
+    deleteListElemIfAny()
+    renderTodo(todos , event.target.value)
+})
+
+//---------------------filtering data for search end
+
+const hideSummary = () =>{
+    document.querySelectorAll('.summaryClassList').forEach(elem => elem.remove())
+    document.querySelectorAll('.summaryClass').forEach(elem => elem.textContent = '')
+}
+
+document.querySelector('#summaryBttn').addEventListener('click',() => {
+
+    hideSummary()
+    document.querySelector('#summaryHideBttn').hidden=false
+
+    const completedTodoListElem = document.getElementById('completeTodoListId')
+    const incompletedTodoListElem =  document.getElementById('incompleteTodoListId')
+    const completedTodoParagraphElem =  document.getElementById('todoCompleteSummaryParagraphId')
+    const incompletedTodoParagraphElem =  document.getElementById('todoIncompleteSummaryParagraphId')
+    
+    const completedTodos = todos.filter(todo => todo.completed)
+    const incompletedTodos = todos.filter(todo => !todo.completed)
+    
+    if(incompletedTodos.length > 0){
+        incompletedTodoParagraphElem.textContent = `You have ${incompletedTodos.length} TODO's to complete !!`
     }
-   
+    
+    if(completedTodos.length > 0){
+        completedTodoParagraphElem.textContent = `You have  completed ${completedTodos.length} TODO's`
+    }
+    
+    todos.forEach(todo =>{
+        let listElement = document.createElement('li')
+        listElement.className = 'summaryClassList'
+        let paragraph = document.createElement('p')
+       
+        let textNode = document.createElement('b')
+        textNode.textContent = `${todo.text}`
+    
+        paragraph.appendChild(textNode)
+       
+        listElement.appendChild(paragraph)
+    
+        if(todo.completed){
+            completedTodoListElem.appendChild(listElement)
+        }else{
+            incompletedTodoListElem.appendChild(listElement)
+        }
+       
+    })
+})
+
+document.querySelector('#summaryHideBttn').addEventListener('click',(e) => {
+    hideSummary()
+    document.querySelector('#summaryHideBttn').hidden=true
 })

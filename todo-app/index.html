@@ -9,10 +9,22 @@
         <header>
         <main>
             <p><i>No one remembers your todo's like we do!!</i></p>
-            <p id='todoIncompleteSummaryParagraphId'></p>
+            <form id = 'createTodoFormId'>
+                <input type='text' placeholder='Create a TODO' name = 'todoName'>
+                <button type="submit">submit</button>
+            </form>
+            <p>Search your TODOs</p>
+            <input id = "queryText" type="text" placeholder="search todo">
+            <input type="image" src="assets/searchImg.png">
+            <ol id='searchTodoListId'></ol>
+            <br><br>
+            <button id='summaryBttn'>summarize</button>
+            <button id='summaryHideBttn' hidden=true>Hide</button>
+
+            <p id='todoIncompleteSummaryParagraphId' class ='summaryClass'></p>
             <ol id='incompleteTodoListId'></ol>
-            <p id='todoCompleteSummaryParagraphId'></p>
-            <ol id='completeTodoListId'></ol>
+            <p id='todoCompleteSummaryParagraphId' class ='summaryClass'></p>
+            <ol id='completeTodoListId' ></ol>
         </main>
         <footer>
             <p><i>This project was developed while understanding basics of javascript</i><br>
