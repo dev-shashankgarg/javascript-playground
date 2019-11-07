@@ -35,6 +35,34 @@ const todos = [
     }
 ]
 
+const renderTodoAll = (todos) => {
+    document.querySelectorAll('.allClassList').forEach(elem => elem.remove())
+
+    const list1 = document.querySelector('#allTodoListId')
+    todos.forEach(todo =>{
+        const listElement = document.createElement('li')
+        listElement.className = 'allClassList'
+        const paragraph = document.createElement('p')
+       
+        const textNode = document.createElement('b')
+        textNode.textContent = `${todo.text}`
+    
+        paragraph.appendChild(textNode)
+        listElement.appendChild(paragraph)
+        list1.appendChild(listElement)
+})
+
+}
+
+renderTodoAll(todos.filter(todo => todo.completed))
+document.querySelector('#showAllTodoCheckboxId').addEventListener('change' , (event) =>{
+    if(event.target.checked){
+        renderTodoAll(todos.filter(todo => todo.completed))
+    }else{
+        renderTodoAll(todos.filter(todo => !todo.completed))
+    }
+})
+
 //------------------ create a todo start
 
 document.querySelector('#createTodoFormId').addEventListener('submit' , (event) => {
@@ -138,3 +166,4 @@ document.querySelector('#summaryHideBttn').addEventListener('click',(e) => {
     hideSummary()
     document.querySelector('#summaryHideBttn').hidden=true
 })
+

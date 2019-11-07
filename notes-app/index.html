@@ -10,7 +10,16 @@
       <main>
         <p>Taking notes to next level...</p>
         <input id = 'queryText' type = "text" placeholder="search a note">
+        <label>
+          sort by:
+          <select id = 'filterBy'>
+            <option value="alphabetically">A-Z</option>
+            <option value="createdDate">Created date</option>
+            <option value="lastUpdated">Last updated</option>
+          </select>
+        </label>
         <input id ='searchImg' type="image" src="assets/searchImg.png">
+
         <ol id= "notesList" ></ol>
         <button id="createNoteBtn">Create note</button>
         <button id="hideNotesButton" >Hide notes</button>

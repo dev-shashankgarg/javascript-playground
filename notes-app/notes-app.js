@@ -49,8 +49,18 @@ const addNoteToList = (note) =>{
 }
 
 const findAndDisplayNote = (query) =>{
+
+    const sortCondition = document.querySelector('#filterBy').value
+
     notes.filter(note => {
         return note.title.toLowerCase().includes(query.toLowerCase()) || note.body.toLowerCase().includes(query.toLowerCase())
+    }).sort((a,b) =>{
+        if(sortCondition === 'alphabetically'){
+            if(a.title.toLowerCase() < b.title.toLowerCase()){return -1}
+            else{
+                return 1
+            }
+        }
     }).forEach(note => {
         addNoteToList(note)
     })
