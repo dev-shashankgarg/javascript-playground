@@ -19,38 +19,18 @@ document.querySelector('#searchInput').addEventListener('input', (event) => {
     }
 })
 
-document.querySelector('#createNoteForm').addEventListener('submit', (event) => {
+document.querySelector('#createNoteBtn').addEventListener('click', (event) => {
     event.preventDefault()
+    const noteId = uuidv4()
     notes.push({
-        id: uuidv4(),
-        title: event.target.elements.title.value ,
-        description: event.target.elements.description.value
+        id: noteId,
+        title: 'untitled' ,
+        description: ''
     })
 
     saveNotes(notes)
-
-    event.target.elements.title.value = ''
-    event.target.elements.description.value = ''
     intialize()
-})
-
-document.querySelector('#removeNoteForm').addEventListener('submit', (event) => {
-    event.preventDefault()
-
-    const noteToRemove = event.target.elements.title.value
-    const savedNotesToRemove =  notes.filter(note => note.title === (noteToRemove))
-
-    savedNotesToRemove.forEach(suchNote => {
-        notes.forEach((note,index) => {
-        if(note.title === suchNote.title){
-             notes.splice(index,1)
-            }
-        })
-    })
-
-    saveNotes(notes)
-    event.target.elements.title.value = ''
-    intialize()
+    location.assign(`/create-note-v2.html#${noteId}`)
 })
 
 document.querySelector('#removeAllNotesForm').addEventListener('submit', (event) => {

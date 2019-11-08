@@ -20,6 +20,10 @@ const removeNote = (id) => {
     }
 }
 
+const findNote = (id) => {
+    return notes.find(note => note.id === id)
+}
+
 const createTableHeader = (tableId) => {
     const thElem = document.createElement('thead')
     thElem.className = tableId + 'Class'
@@ -46,7 +50,11 @@ const createTableRow= (tableId , index , note) => {
     col1.textContent = index
     trElem.appendChild(col1)
     const col2 = document.createElement('td')
-    col2.textContent = note.title
+
+    const linkage = document.createElement('a')
+    linkage.setAttribute('href' , `/create-note-v2.html#${note.id}`)
+    linkage.textContent = note.title
+    col2.appendChild(linkage)
     trElem.appendChild(col2)
     const col3 = document.createElement('td')
     col3.textContent = note.description

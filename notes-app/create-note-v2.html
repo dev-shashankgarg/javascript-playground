@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Notes Application 2019: create note</title>
+    </head>
+    <body>
+        <header>
+            <h1>Create/Edit Note</h1>
+            <p><i>Create or edit your note at speed</i></p>
+        </header>
+        <main>
+                <table>
+                <tr><td>Title:</td> <td><input type="text" id='titleId' placeholder="note title" name="title"></td></tr>
+                <tr><td>Description:</td><td><textarea id='descriptionId' rows="4" cols="50" placeholder="note description" name="description"></textarea></td></tr>
+                </table>
+                <br>
+                <button type="submit" id='removeBtn'>remove note</button>
+                <button type="submit" id='backBtn'>go to home</button>
+        </main>
+        <footer>
+            <p>Application designed exclusively for understanding javascript<br>
+            Developed by <b>Shashank garg</b> (<a href="https://github.com/dev-shashankgarg">github</a>)</p>
+        </footer>
+        <script src='notes-app-functions-v2.js'></script>
+        <script src='create-note-v2.js'></script>
+    </body>
+</html>
