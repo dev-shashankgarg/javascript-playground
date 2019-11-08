@@ -13,6 +13,12 @@ const saveNotes = (notes)=> {
     localStorage.setItem('notes', notesJson)
 }
 
+const removeNote = (id) => {
+    const noteIndex = notes.findIndex( note => note.id === id)
+    if(noteIndex > -1){
+        notes.splice(noteIndex , 1)
+    }
+}
 
 const createTableHeader = (tableId) => {
     const thElem = document.createElement('thead')
@@ -26,6 +32,9 @@ const createTableHeader = (tableId) => {
     const header3 = document.createElement('th')
     header3.textContent = 'Description'
     thElem.appendChild(header3)
+    const header4 = document.createElement('th')
+    header4.textContent = 'Remove'
+    thElem.appendChild(header4)
     return thElem
 }
 
@@ -42,6 +51,22 @@ const createTableRow= (tableId , index , note) => {
     const col3 = document.createElement('td')
     col3.textContent = note.description
     trElem.appendChild(col3)
+
+    const col4 = document.createElement('td')
+    const button = document.createElement('button')
+    button.textContent = 'x'
+
+    button.addEventListener('click' , (event) => {
+        removeNote(note.id)
+        saveNotes(notes)
+        renderNotes(tableId , notes)
+
+    })
+
+    col4.appendChild(button)
+
+    trElem.appendChild(col4)
+
     return trElem
 }
 

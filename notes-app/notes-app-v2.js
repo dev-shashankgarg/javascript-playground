@@ -22,6 +22,7 @@ document.querySelector('#searchInput').addEventListener('input', (event) => {
 document.querySelector('#createNoteForm').addEventListener('submit', (event) => {
     event.preventDefault()
     notes.push({
+        id: uuidv4(),
         title: event.target.elements.title.value ,
         description: event.target.elements.description.value
     })

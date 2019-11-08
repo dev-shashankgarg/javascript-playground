@@ -12,6 +12,19 @@ const saveTodo = (todos) => {
     localStorage.setItem('todos' , todoJson)
 }
 
+const removeTodo = (id) => {
+    const todoIndex = todos.findIndex(todo => todo.id === id)
+    if(todoIndex > -1){
+        todos.splice(todoIndex , 1)
+    }
+}
+
+const findTodo = (id) => {
+    const todo= todos.find(todo => todo.id === id)
+    if(todo !== null){
+        return todo
+    }
+}
 
 const createTableHeader = (tableId) =>{
 
@@ -24,9 +37,14 @@ const createTableHeader = (tableId) =>{
     const h2 = document.createElement('th')
     h2.textContent = "Name"
     tHeadElem.appendChild(h2)
-    const h3 = document.createElement('th')
-    h3.textContent = "Status"
-    tHeadElem.appendChild(h3)
+
+    const h0 = document.createElement('th')
+    h0.textContent = "Completed"
+    tHeadElem.appendChild(h0)
+
+    const h4 = document.createElement('th')
+    h4.textContent = "Remove"
+    tHeadElem.appendChild(h4)
     
     return tHeadElem
 }
@@ -34,20 +52,53 @@ const createTableHeader = (tableId) =>{
     const createTableRow = (tableId ,index, todo) => {
         const tRow = document.createElement('tr')
         tRow.className = `${tableId}Class`
-    
+
         const col1 = document.createElement('td')
         col1.textContent = index
         tRow.appendChild(col1)
         const col2 = document.createElement('td')
         col2.textContent = todo.name
         tRow.appendChild(col2)
-        const col3 = document.createElement('td')
-        tRow.appendChild(col3)
+
+        const col0 = document.createElement('td')
+        const checkBox = document.createElement('input')
+        checkBox.setAttribute('type' , 'checkbox')
+
+
+        checkBox.addEventListener('change' , (event) => {
+
+            const completed = event.target.checked
+            const todoUnderChange = findTodo(todo.id)
+            todoUnderChange.completed = completed
+
+            saveTodo(todos)
+            renderTodosWithHidden(tableId,todos,document.querySelector('#hideCompletedCheckbox').checked)
+        })
+
+        col0.appendChild(checkBox)
+        tRow.appendChild(col0)
+     
         if(todo.completed){
-            col3.textContent = "Completed"
+            checkBox.checked = true
         }else{
-            col3.textContent = "Not Completed"
+            checkBox.checked = false
         }
+
+
+        const col4 = document.createElement('td')
+        const button = document.createElement('button')
+        button.textContent = 'x'
+
+
+        button.addEventListener('click' , (event) => {
+            removeTodo(todo.id)
+            saveTodo(todos)
+            renderTodos(tableId , todos)
+        })
+
+        col4.appendChild(button)
+        tRow.appendChild(col4)
+
         return tRow
     }
     

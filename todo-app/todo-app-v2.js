@@ -8,6 +8,7 @@ document.querySelector('#createTodoForm').addEventListener('submit' , (event) =>
     event.preventDefault()
 
     todos.push({
+        id: uuidv4(),
         name:event.target.elements.name.value,
         completed: false
     })

@@ -13,6 +13,11 @@ brew install node
 npm install -g live-server
 ```
 
+3. Download Third Party js files
+```
+http://links.mead.io/uuidv4
+```
 
 ### Appendix
 * [Install HomeBrew for macOs](https://brew.sh/)
+* [node-uuid](https://github.com/kelektiv/node-uuid)
