@@ -25,7 +25,9 @@ document.querySelector('#createNoteBtn').addEventListener('click', (event) => {
     notes.push({
         id: noteId,
         title: 'untitled' ,
-        description: ''
+        description: '' ,
+        createdTime: moment().valueOf(),
+        lastModifiedTime: moment().valueOf()
     })
 
     saveNotes(notes)
@@ -37,6 +39,16 @@ document.querySelector('#removeAllNotesForm').addEventListener('submit', (event)
     event.preventDefault()
     localStorage.removeItem('notes')
     intialize()
+})
+
+window.addEventListener('storage' , (event) => {
+
+    if(event.key === 'notes'){
+        notes = JSON.parse(event.newValue)
+        const sortCondition = document.querySelector('#sortDropdown').value
+        renderAllNotesWithSorting('allNoteTable' , notes, sortCondition)
+    }
+
 })
 
 

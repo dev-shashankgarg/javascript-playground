@@ -21,3 +21,4 @@ http://links.mead.io/uuidv4
 ### Appendix
 * [Install HomeBrew for macOs](https://brew.sh/)
 * [node-uuid](https://github.com/kelektiv/node-uuid)
+* [moment js](https://momentjs.com/)
