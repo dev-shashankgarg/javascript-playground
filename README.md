@@ -18,6 +18,11 @@ npm install -g live-server
 http://links.mead.io/uuidv4
 ```
 
+### Resources
+* [word-api](http://puzzle.mead.io/puzzle)
+* [countries-api](https://restcountries.eu/rest/v2/all)
+
+
 ### Appendix
 * [Install HomeBrew for macOs](https://brew.sh/)
 * [node-uuid](https://github.com/kelektiv/node-uuid)

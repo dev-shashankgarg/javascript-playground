@@ -26,8 +26,14 @@ const createGame = () => {
     puzzleArea.textContent = ''
     guessArea.textContent = ''
 
-    game = new Hangman(dictionary.getWord() , 5)
-    renderGame(game)
+    dictionary.getApiWord((error , word) => {
+        if(error){
+            console.log('Game is under maintainance. Please try again later!')
+        }else{
+            game = new Hangman( word, 5)
+            renderGame(game)
+        }
+    })
 }
 
 newGameBtn.addEventListener('click' , (event) => {
