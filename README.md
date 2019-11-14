@@ -21,6 +21,7 @@ http://links.mead.io/uuidv4
 ### Resources
 * [word-api](http://puzzle.mead.io/puzzle)
 * [countries-api](https://restcountries.eu/rest/v2/all)
+* [ipinfo-api](https://ipinfo.io)
 
 
 ### Appendix

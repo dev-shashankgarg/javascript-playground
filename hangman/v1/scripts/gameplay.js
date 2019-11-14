@@ -7,7 +7,12 @@ let statusArea = document.querySelector('#statusDisplayId')
 const renderGame = (game) => {
 
     let currentStatus = game.status
-    puzzleArea.textContent = game.puzzle
+    puzzleArea.innerHTML =  ''
+    game.puzzle.split('').forEach(letter => {
+        const elem = document.createElement('span')
+        elem.textContent = letter
+        puzzleArea.appendChild(elem)
+    })
     guessArea.textContent = `Guesses Allowed: ${game.guessAllowed}`
     statusArea.textContent = `Current Game Status: ${currentStatus}`
 
@@ -15,9 +20,13 @@ const renderGame = (game) => {
         alert(game.statusMessage)
     }
     if(currentStatus === 'FAILED'){
-        puzzleArea.textContent = game.word.join('')
+        puzzleArea.innerHTML = '' 
+        game.word.join('').split('').forEach(letter => {
+            const elem = document.createElement('span')
+            elem.textContent = letter
+            puzzleArea.appendChild(elem)
+        })
     }
-
 }
 
 const createGame = () => {
@@ -26,13 +35,11 @@ const createGame = () => {
     puzzleArea.textContent = ''
     guessArea.textContent = ''
 
-    dictionary.getApiWord((error , word) => {
-        if(error){
-            console.log('Game is under maintainance. Please try again later!')
-        }else{
-            game = new Hangman( word, 5)
-            renderGame(game)
-        }
+    dictionary.asyncWordApi().then((word) => {
+        game = new Hangman( word, 5)
+        renderGame(game)
+    }).catch((err) => {
+        console.log(err)
     })
 }
 
