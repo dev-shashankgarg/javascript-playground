@@ -20,9 +20,9 @@ http://links.mead.io/uuidv4
 
 ### Applications
 
-* [Hangman Application](https://eloquent-dubinsky-dcf249.netlify.com)
-* [Notes Application](https://pensive-edison-320afe.netlify.com)
-* [TODO Application](https://confident-edison-360e56.netlify.com)
+* [Hangman Application](https://shashank-hangman.netlify.com)
+* [Notes Application](https://shashank-notes.netlify.com)
+* [TODO Application](https://shashank-todo.netlify.com)
 
 ### Resources
 * [word-api](http://puzzle.mead.io/puzzle)
