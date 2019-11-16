@@ -7,14 +7,15 @@ init()
 document.querySelector('#createTodoForm').addEventListener('submit' , (event) => {
     event.preventDefault()
 
-    todos.push({
-        id: uuidv4(),
-        name:event.target.elements.name.value,
-        completed: false
-    })
+    if(event.target.elements.name.value.trim() !== ''){
+        todos.push({
+            id: uuidv4(),
+            name:event.target.elements.name.value,
+            completed: false
+        })
 
-    saveTodo(todos)
-
+        saveTodo(todos)
+    }
     event.target.elements.name.value = ''
     init()
 })

@@ -87,8 +87,8 @@ const createTableHeader = (tableId) =>{
 
         const col4 = document.createElement('td')
         const button = document.createElement('button')
-        button.textContent = 'x'
-
+        button.textContent = 'remove'
+        button.className='button button--secondary'
 
         button.addEventListener('click' , (event) => {
             removeTodo(todo.id)
