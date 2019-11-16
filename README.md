@@ -35,3 +35,4 @@ http://links.mead.io/uuidv4
 * [node-uuid](https://github.com/kelektiv/node-uuid)
 * [moment js](https://momentjs.com/)
 * [Host Static websites](https://www.netlify.com)
+* [Host Static websites using CL](https://surge.sh/)
