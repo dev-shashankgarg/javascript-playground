@@ -16,7 +16,7 @@ const dictionary = {
                 callback(new Error('could not fetch word :('))
             }
         })
-        request.open('GET','http://puzzle.mead.io/puzzle')
+        request.open('GET','//puzzle.mead.io/puzzle')
         request.send()
     },
     getApiWordPromise(){
@@ -31,17 +31,17 @@ const dictionary = {
                 reject(new Error('could not fetch word :('))
             }
         })
-        request.open('GET','http://puzzle.mead.io/puzzle')
+        request.open('GET','//puzzle.mead.io/puzzle')
         request.send()
         })
     },
     fetchWordApi(){
-        return fetch('http://puzzle.mead.io/puzzle',{}).then((response) => {
+        return fetch('//puzzle.mead.io/puzzle',{}).then((response) => {
             if( response.status ===200 ){ return response.json() }else{ throw new Error('reponse code: not successfull')}
         }).then((data) => data.puzzle)
     },
     async asyncWordApi(){
-        const response = await fetch('http://puzzle.mead.io/puzzle',{})
+        const response = await fetch('//puzzle.mead.io/puzzle',{})
             if( response.status ===200 ){
                  const data = await response.json() 
                  return data.puzzle
@@ -51,7 +51,7 @@ const dictionary = {
     },
     getApiWordSync(){ // not to be used, bad to call in sync mode
         const request = new XMLHttpRequest()
-        request.open('GET','http://puzzle.mead.io/puzzle',false)
+        request.open('GET','//puzzle.mead.io/puzzle',false)
         request.send()
 
         if(request.readyState === 4 && request.status ===200){

@@ -18,6 +18,12 @@ npm install -g live-server
 http://links.mead.io/uuidv4
 ```
 
+### Applications
+
+* [Hangman Application](https://eloquent-dubinsky-dcf249.netlify.com)
+* [Notes Application](https://pensive-edison-320afe.netlify.com)
+* [TODO Application](https://confident-edison-360e56.netlify.com)
+
 ### Resources
 * [word-api](http://puzzle.mead.io/puzzle)
 * [countries-api](https://restcountries.eu/rest/v2/all)
@@ -28,3 +34,4 @@ http://links.mead.io/uuidv4
 * [Install HomeBrew for macOs](https://brew.sh/)
 * [node-uuid](https://github.com/kelektiv/node-uuid)
 * [moment js](https://momentjs.com/)
+* [Host Static websites](https://www.netlify.com)
