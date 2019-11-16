@@ -70,6 +70,7 @@ const createTableRow= (tableId , index , note) => {
     const col4 = document.createElement('td')
     const button = document.createElement('button')
     button.textContent = 'x'
+    button.className = 'button button--secondary'
 
     button.addEventListener('click' , (event) => {
         removeNote(note.id)
