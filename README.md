@@ -17,6 +17,10 @@ npm install -g live-server
 ```
 http://links.mead.io/uuidv4
 ```
+4. Install babel (for cross browser compatibilty)
+```
+npm install -g babel-cli
+```
 
 ### Applications
 
